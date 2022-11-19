@@ -1,12 +1,9 @@
 let images = [{
-	url: './images/slider-image1.jpg',
-	title: 'Rostov-on-Don, Admiral'
+	url: './images/slider-image1.jpg'
 }, {
-	url: './images/slider-image2.jpg',
-	title: 'Sochi Thieves'
+	url: './images/slider-image2.jpg'	
 }, {
-	url: './images/slider-image3.jpg',
-	title: 'Rostov-on-Don Patriotic'
+	url: './images/slider-image3.jpg'	
 }
 ];
 
@@ -18,11 +15,13 @@ function initSlider() {
 
 	let sliderImages = document.querySelector(".slider-images");
 	let sliderControl = document.querySelector(".slider-control");
-	
+	let sliderButtons = document.querySelector(".slider-buttons");
+
 
 	initImages();
 	initArrows();
 	initDots();
+	initButtons();
 
 	function initImages() {
 		images.forEach((image, index) => {
@@ -33,7 +32,7 @@ function initSlider() {
 
 	function initArrows() {
 		sliderControl.querySelectorAll(".slider-arrow").forEach(arrow => {
-			arrow.addEventListener("click", function () {
+			arrow.addEventListener("click", () => {
 				let currNumber = +sliderImages.querySelector(".active").dataset.index;
 				let nextNumber;
 				if (arrow.classList.contains("left")) {
@@ -47,7 +46,6 @@ function initSlider() {
 	}
 
 	function initDots() {
-
 		images.forEach((image, index) => {
 			if (index === 0) {
 				sliderControl.querySelector(".slider-dot.n0").classList.add("active");
@@ -55,7 +53,7 @@ function initSlider() {
 		})
 
 		sliderControl.querySelectorAll(".slider-dot").forEach((dot, index) => {
-			dot.addEventListener("click", function () {
+			dot.addEventListener("click", () => {
 				moveSlider(index);
 			})
 		})
@@ -66,9 +64,24 @@ function initSlider() {
 		sliderImages.querySelector(`.n${num}`).classList.add("active");
 		sliderControl.querySelector(".slider-dot.active").classList.remove("active");
 		sliderControl.querySelector(`.slider-dot.n${num}`).classList.add("active");
+		sliderButtons.querySelector(".slider-button.active").classList.remove("active");
+		sliderButtons.querySelector(`.slider-button.n${num}`).classList.add("active");
+	}
+
+	function initButtons() {
+		images.forEach((image, index) => {
+			if (index === 0) {
+				sliderButtons.querySelector(".slider-button.n0").classList.add("active");
+			}
+		})
+		sliderButtons.querySelectorAll(".slider-button").forEach((btn, index) => {
+			btn.addEventListener("click", () => {
+				moveSlider(index);
+			})
+		})
 	}
 }
 
-document.addEventListener("DOMContentLoaded", function () {
+document.addEventListener("DOMContentLoaded", () => {
 	initSlider();
 });
