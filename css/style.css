@@ -15,6 +15,8 @@ img {
 
 }
 
+
+
 body {
 	height: 100%;
 	font-family: 'Nunito Sans', 'Arial', 'Times New Roman', sans-serif;
@@ -71,6 +73,7 @@ li {
 
 .completed-left {
 	padding-right: 50px;
+	position: relative;
 }
 
 .title {
@@ -81,6 +84,17 @@ li {
 	line-height: 37px;
 	letter-spacing: -0.07em;
 	font-weight: inherit;
+}
+
+
+.title-line {
+	background-color: #E3B873;
+	height: 1px;
+	width: 91px;
+	position: absolute;
+	top: 52px;
+	left: 161px;
+
 }
 
 .completed-text {
@@ -122,33 +136,40 @@ li {
 	padding-top: 55px;
 }
 
-.slider-arrow,
-.slider-dot {
+.nav-button {
 	background: 0;
 	cursor: pointer;
 }
 
-.slider-dot {
+.nav-button:nth-child(2),
+.nav-button:nth-child(3),
+.nav-button:nth-child(4) {
 	height: 9.6px;
 	width: 9.6px;
 	border-radius: 50%;
 }
 
-.slider-dot:nth-last-child(3) {
+.nav-button:nth-child(2):hover,
+.nav-button:nth-child(3):hover,
+.nav-button:nth-child(4):hover,
+.nav-button:nth-child(2).active,
+.nav-button:nth-child(3).active,
+.nav-button:nth-child(4).active {
+	background-color: #FFFFFF;
+}
+
+.nav-button:nth-last-child(3) {
 	margin-left: 17px;
 	margin-right: 17px;
 }
 
-.slider-dot:hover,
-.slider-dot.active {
-	background-color: #FFFFFF;
-}
 
-.slider-arrow:first-child {
+
+.nav-button:first-child {
 	margin-right: 29px;
 }
 
-.slider-arrow:last-child {
+.nav-button:last-child {
 	margin-left: 29px;
 }
 
